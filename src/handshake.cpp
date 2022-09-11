@@ -143,7 +143,7 @@ namespace dci::module::ppn::node::link
                     if(i.mdLid() != api::remote::Payload<>::lid())
                     {
                         _completion.resolveException(exception::buildInstance<api::RemoteFailure>("unknown interface received from remote instead of Payload"));
-                        return cmt::readyFuture<void>();
+                        return cmt::readyFuture(None{});
                     }
 
                     _state._payload = std::move(i);
@@ -154,7 +154,7 @@ namespace dci::module::ppn::node::link
                     _state.reset();
                 }
 
-                return cmt::readyFuture<void>();
+                return cmt::readyFuture(None{});
             };
         }
 

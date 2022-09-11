@@ -150,7 +150,7 @@ namespace dci::module::ppn::node::link
             if(i.mdLid() != api::remote::Payload<>::lid())
             {
                 methods()->failed(exception::buildInstance<api::RemoteFailure>("unknown interface received from remote instead of Payload"));
-                return cmt::readyFuture<void>();
+                return cmt::readyFuture(None{});
             }
 
             _sbsOwner4Payload.flush();
@@ -159,11 +159,11 @@ namespace dci::module::ppn::node::link
             if(!_payload)
             {
                 methods()->failed(exception::buildInstance<api::RemoteFailure>("null Payload interface received from remote"));
-                return cmt::readyFuture<void>();
+                return cmt::readyFuture(None{});
             }
 
             setupPayload();
-            return cmt::readyFuture<void>();
+            return cmt::readyFuture(None{});
         };
 
         setupPayloadOut();
