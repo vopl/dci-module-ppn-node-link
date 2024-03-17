@@ -123,7 +123,7 @@ namespace dci::module::ppn::node::link
             }
         };
 
-        _stiacProto->fail() += this * [this](ExceptionPtr&& e)
+        _stiacProto->failed() += this * [this](ExceptionPtr&& e)
         {
             methods()->failed(exception::buildInstance<api::ProtocolFailure>(e));
             doClose();
@@ -139,7 +139,7 @@ namespace dci::module::ppn::node::link
             }
         };
 
-        _stiacLocalEdge->fail() += this * [this](ExceptionPtr&& e)
+        _stiacLocalEdge->failed() += this * [this](ExceptionPtr&& e)
         {
             methods()->failed(exception::buildInstance<api::ProtocolFailure>(e));
             doClose();

@@ -127,7 +127,7 @@ namespace dci::module::ppn::node::link
             crypto::blake2b(remotePublicKey.data(), remotePublicKey.size(), _state._id.data(), _state._id.size());
         };
 
-        _state._stiacProto->fail() += this * [this](const ExceptionPtr& e)
+        _state._stiacProto->failed() += this * [this](const ExceptionPtr& e)
         {
             if(_completion.charged() && !_completion.resolved())
             {
